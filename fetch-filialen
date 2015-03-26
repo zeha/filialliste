@@ -6,6 +6,7 @@ do_rewe() {
   curl -sf 'https://secureservice.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27MS%27&jp=cb' >> filialen-rewe
   curl -sf 'https://secureservice.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27BP%27&jp=cb' >> filialen-rewe
   curl -sf 'https://secureservice.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27PE%27&jp=cb' >> filialen-rewe
+  curl -sf 'https://secureservice.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27SU%27&jp=cb' >> filialen-rewe
   curl -sf 'http://service.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27AD%27&jp=cb' >> filialen-rewe
   node -e 'cb = require("./rewe.js").format_csv; require("./filialen-rewe");'
 }

@@ -10,6 +10,7 @@ exports.format_csv = function(data) {
     if (el.group == "MS_") storetype = "MERKUR";
     if (el.group == "PE_") storetype = "PENNY";
     if (el.group == "AD_") storetype = "ADEG";
+    if (el.group == "SU_") storetype = "SUTTERLUETY";
     console.log(storetype + ";" + k + ";" + el.latitude + ";" + el.longitude + ";" + el.zip + " " + el.name );
   }
 }
