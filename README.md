@@ -18,3 +18,6 @@ xsltproc node curl
 * MTH (Libro, Pagro)
 * MSB (MediaMarkt, Saturn)
 
+## WARNING
+
+This software executes code downloaded from Internet sources without further checking.
