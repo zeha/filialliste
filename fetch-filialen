@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+do_rewe() {
+  rm -f filialen-rewe
+  curl -sf 'https://secureservice.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27BA%27&jp=cb' >> filialen-rewe
+  curl -sf 'https://secureservice.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27MS%27&jp=cb' >> filialen-rewe
+  curl -sf 'https://secureservice.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27BP%27&jp=cb' >> filialen-rewe
+  curl -sf 'https://secureservice.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27PE%27&jp=cb' >> filialen-rewe
+  curl -sf 'http://service.rewe.co.at/filialservice/FilialJson.asmx/GetFilialenJson?shopCd=%27AD%27&jp=cb' >> filialen-rewe
+  node -e 'cb = require("./rewe.js").format_csv; require("./filialen-rewe");'
+}
+
+do_mth() {
+  curl -sf 'https://www.libro.at/ustorelocator/location/search/?addr=%25' | xsltproc mth.xsl - | sed -e 's/^/LIBRO;/'
+  curl -sf 'https://www.pagro.at/ustorelocator/location/search/?addr=%25' | xsltproc mth.xsl - | sed -e 's/^/PAGRO;/'
+}
+
+echo 'STORETYPE;STOREID;LAT;LON;ADDRESS'
+do_rewe
+do_mth
