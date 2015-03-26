@@ -35,7 +35,7 @@ do_zielpunkt() {
   echo 'cb(' >> filialen-zielpunkt
   curl -sf 'http://www.zielpunkt.at/data/filalen3.php' >> filialen-zielpunkt
   echo ');' >> filialen-zielpunkt
-  node -e 'function cb(data) { data.forEach(function(el) { console.log("ZIELPUNKT;" + el.id + ";" + el.posn[0] + ";" + el.posn[1] + ";" + el.navi); }); } require("./filialen-zielpunkt");'
+  node -e 'cb=require("./zielpunkt.js").format_csv; require("./filialen-zielpunkt");'
 }
 
 echo 'STORETYPE;STOREID;LAT;LON;ADDRESS'
