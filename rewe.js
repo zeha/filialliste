@@ -11,6 +11,6 @@ exports.format_csv = function(data) {
     if (el.group == "PE_") storetype = "PENNY";
     if (el.group == "AD_") storetype = "ADEG";
     if (el.group == "SU_") storetype = "SUTTERLUETY";
-    console.log(storetype + ";" + k + ";" + el.latitude + ";" + el.longitude + ";" + el.zip + " " + el.name );
+    console.log(storetype + ";" + k + ";" + el.latitude + ";" + el.longitude + ";" + el.region + ";" + el.zip + ";" + el.city + ";" + el.address1 + " " + el.address2);
   }
 }

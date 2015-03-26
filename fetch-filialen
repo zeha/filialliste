@@ -38,7 +38,7 @@ do_zielpunkt() {
   node -e 'cb=require("./zielpunkt.js").format_csv; require("./filialen-zielpunkt");'
 }
 
-echo 'STORETYPE;STOREID;LAT;LON;ADDRESS'
+echo 'STORETYPE;STOREID;LAT;LON;REGION;ZIP;CITY;ADDRESS'
 do_msb
 do_mth
 do_rewe
