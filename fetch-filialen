@@ -15,6 +15,21 @@ do_mth() {
   curl -sf 'https://www.pagro.at/ustorelocator/location/search/?addr=%25' | xsltproc mth.xsl - | sed -e 's/^/PAGRO;/'
 }
 
+do_msb() {
+  rm -f filialen-mediamarkt
+  curl -sf 'http://www.mediamarkt.at/webapp/wcs/stores/servlet/MultiChannelAllStores?storeId=10201&langId=-15' >> filialen-mediamarkt
+  echo 'exports.shops = customShopsList;' >> filialen-mediamarkt
+  rm -f filialen-saturn
+  curl -sf 'http://www.saturn.at/webapp/wcs/stores/servlet/MultiChannelAllStores?storeId=20301&langId=-15' >> filialen-saturn
+  echo 'exports.shops = customShopsList;' >> filialen-saturn
+
+  node -e 'format_csv = require("./msb.js").format_csv;
+  shops=require("./filialen-mediamarkt").shops; format_csv("MEDIAMARKT", shops);
+  shops=require("./filialen-saturn").shops; format_csv("SATURN", shops);
+  '
+}
+
 echo 'STORETYPE;STOREID;LAT;LON;ADDRESS'
-do_rewe
+do_msb
 do_mth
+do_rewe
