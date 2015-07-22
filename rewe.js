@@ -14,6 +14,6 @@ exports.format_csv = function(data) {
     extra = el.jsonPayload[1].split("|");
     phone = (extra[0] || '').replace(/^p:/, '');
     times = (extra[1] || '').replace(/^t:/, '').replace(/\u003cbr\u003e/g, ', ');
-    console.log(storetype + ";" + k + ";" + el.latitude + ";" + el.longitude + ";" + el.region + ";" + el.zip + ";" + el.city + ";" + el.address1 + " " + el.address2 + ";" + phone + ";" + times);
+    console.log(storetype + "|" + k + "|" + el.latitude + "|" + el.longitude + "|" + el.region + "|" + el.zip + "|" + el.city + "|" + el.address1 + " " + el.address2 + "|" + phone + "|" + times);
   }
 }
