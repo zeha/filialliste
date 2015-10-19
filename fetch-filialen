@@ -12,8 +12,8 @@ do_rewe() {
 }
 
 do_mth() {
-  curl -sf 'https://www.libro.at/ustorelocator/location/search/?addr=%25' | xsltproc mth.xsl - | sed -e 's/^/LIBRO;/'
-  curl -sf 'https://www.pagro.at/ustorelocator/location/search/?addr=%25' | xsltproc mth.xsl - | sed -e 's/^/PAGRO;/'
+  curl -sf 'https://www.libro.at/ustorelocator/location/search/?addr=%25' | xsltproc mth.xsl - | sed -e 's/^/Libro|/'
+  curl -sf 'https://www.pagro.at/ustorelocator/location/search/?addr=%25' | xsltproc mth.xsl - | sed -e 's/^/Pagro|/'
 }
 
 do_msb() {
@@ -25,8 +25,8 @@ do_msb() {
   echo 'exports.shops = customShopsList;' >> filialen-saturn
 
   node -e 'format_csv = require("./msb.js").format_csv;
-  shops=require("./filialen-mediamarkt").shops; format_csv("MEDIAMARKT", shops);
-  shops=require("./filialen-saturn").shops; format_csv("SATURN", shops);
+  shops=require("./filialen-mediamarkt").shops; format_csv("MediaMarkt", shops);
+  shops=require("./filialen-saturn").shops; format_csv("Saturn", shops);
   '
 }
 
@@ -38,7 +38,7 @@ do_zielpunkt() {
   node -e 'cb=require("./zielpunkt.js").format_csv; require("./filialen-zielpunkt");'
 }
 
-echo 'STORETYPE;STOREID;LAT;LON;REGION;ZIP;CITY;ADDRESS;PHONE;TIMES'
+echo 'STORETYPE|STOREID|LAT|LON|REGION|ZIP|CITY|ADDRESS|PHONE|TIMES'
 do_msb
 do_mth
 do_rewe
