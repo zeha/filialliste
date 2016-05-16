@@ -34,3 +34,4 @@ echo 'STORETYPE|STOREID|LAT|LON|REGION|ZIP|CITY|ADDRESS|PHONE|TIMES'
 do_msb
 do_mth
 do_rewe
+python lidl.py
