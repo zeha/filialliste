@@ -30,16 +30,7 @@ do_msb() {
   '
 }
 
-do_zielpunkt() {
-  rm -f filialen-zielpunkt
-  echo 'cb(' >> filialen-zielpunkt
-  curl -sf 'http://www.zielpunkt.at/data/filalen3.php' >> filialen-zielpunkt
-  echo ');' >> filialen-zielpunkt
-  node -e 'cb=require("./zielpunkt.js").format_csv; require("./filialen-zielpunkt");'
-}
-
 echo 'STORETYPE|STOREID|LAT|LON|REGION|ZIP|CITY|ADDRESS|PHONE|TIMES'
 do_msb
 do_mth
 do_rewe
-do_zielpunkt

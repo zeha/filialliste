@@ -17,7 +17,6 @@ xsltproc node curl
 * REWE (Billa, Bipa, Merkur, Penny, Adeg, Sutterluety)
 * MTH (Libro, Pagro)
 * MSB (MediaMarkt, Saturn)
-* Zielpunkt
 
 ## WARNING
 
